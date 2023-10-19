@@ -1,16 +1,15 @@
 <html>
 <head>
+    <title>Age Calculator</title>
 </head>
 <body>
-Hello World
-<h1>Welcome</h1>
-<p>Hope you are happy to be here</p>
-<form action="/submit" method="post">
+  <h1>This age calcuator will tell you your age in days</h1>
+  <form action="/calculate_age" method="post">
   <label for="namefield">Name:</label>
   <input type="text" id="namefield" name="name">
-  <label for="agefield">Age:</label>
-  <input type="number" id="agefield" name="age">
-  <input type="submit" value="Submit">
+  <label for="dob">Date of Birth:</label>
+  <input type="date" id="dob" name="dob">
+  <input type="submit" value="Calculate Age">
 </form>  
 </body>
 </html>
