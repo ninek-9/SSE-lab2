@@ -17,4 +17,4 @@ def calculate_age():
     today = datetime.now()
     age_in_days = (today - dob_date).days
 
-    return f"Hello, {name}! You are {age_in_days} days old."
+    return render_template("hello.html", name=name, age=age_in_days)
