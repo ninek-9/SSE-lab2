@@ -22,6 +22,12 @@ def calculate_age():
     return render_template("hello.html", name=name, age_in_days=age_in_days)
 
 
+def process_query(query):
+    if query == "dinosaurs":
+        return "Dinosaurs ruled the Earth 200 million years ago"
+    else:
+        return "Unknown"
+
 @app.route("/query")
 def query():
     query_parameter = request.args.get("q")
