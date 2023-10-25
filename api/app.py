@@ -20,3 +20,11 @@ def calculate_age():
     age_in_days = (today - dob_date).days
 
     return render_template("hello.html", name=name, age_in_days=age_in_days)
+
+
+@app.route("/query")
+def query():
+    query_parameter = request.args.get("q")
+    response = process_query(query_parameter)
+
+    return response
