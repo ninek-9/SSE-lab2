@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install dependencies
-        run: run: |
+        run: |
           pip install pytest
           pip install flask
       - name: Run unit test
