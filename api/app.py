@@ -33,3 +33,6 @@ def process_query(query):
 def query():
     query_parameter = request.args.get("q")
     return process_query(query_parameter)
+
+if __name__ == '__main__':
+    app.run(debug=True)
