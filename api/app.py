@@ -23,11 +23,12 @@ def calculate_age():
 
 
 def process_query(query):
-    if query == "dinosaurs":
+    if "dinosaurs" in query:
         return "Dinosaurs ruled the Earth 200 million years ago"
+    if "name" in query:
+        return "Nine"
     else:
         return "Unknown"
-
 
 @app.route("/query")
 def query():
