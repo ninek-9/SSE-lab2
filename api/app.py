@@ -25,7 +25,7 @@ def calculate_age():
 def process_query(query):
     if "dinosaurs" in query:
         return "Dinosaurs ruled the Earth 200 million years ago"
-    if else "name" in query:
+    if "name" in query:
         return "Nine"
     else:
         return "Unknown"
