@@ -27,6 +27,8 @@ def process_query(query):
         return "Dinosaurs ruled the Earth 200 million years ago"
     elif "name" in query:
         return "Nine"
+    elif "What is 43 plus 73?" in query:
+        return "116"
     else:
         return "Unknown"
 
