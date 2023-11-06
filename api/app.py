@@ -30,10 +30,10 @@ def github():
 
 @app.route("/submit", methods=["POST"])
 def github_username():
-    username = request.form.get("username.html")
+    username = request.form.get("username")
+    response = requests.get("https://api.github.com/users/{username}/repos")
 
 
-response = requests.get("https://api.github.com/users/{username}/repos")
 if response.status_code == 200:
     repos = response.json()
     return render_template("username.html", name=username, repositories=repos)
