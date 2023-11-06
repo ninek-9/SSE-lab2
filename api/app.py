@@ -35,8 +35,8 @@ def github_username():
 
     if response.status_code == 200:
         repos = response.json()
-        return render_template("username.html", 
-        name=username, repositories=repos)
+        return render_template("username.html", \
+name=username, repositories=repos)
 
     else:
         return "GitHub API request failed."
