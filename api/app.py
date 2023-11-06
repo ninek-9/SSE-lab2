@@ -37,7 +37,8 @@ def github_username():
         repos = response.json()
         return render_template("username.html",
                               name=username,
-                              repositories=repos)
+                              repositories=repos
+                              )
 
     else:
         return "GitHub API request failed."
