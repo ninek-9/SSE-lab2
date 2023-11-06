@@ -4,6 +4,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 
+@app.route("/calculate_age")
 def index():
     return render_template("index.html")
 
@@ -21,11 +22,12 @@ def calculate_age():
     return render_template("hello.html", name=name, age_in_days=age_in_days)
 
 
+@app.route("/git_user")
 def github():
     return render_template("github.html")
 
 
-@app.route("/submit", methods=["POST"])
+@app.route("/git_user", methods=["POST"])
 def github_username():
     username = request.form.get("username")
 
