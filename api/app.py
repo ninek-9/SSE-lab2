@@ -4,6 +4,10 @@ from datetime import datetime
 app = Flask(__name__)
 
 
+def index():
+    return render_template("index.html")
+
+
 @app.route("/calculate_age", methods=["POST"])
 def calculate_age():
     name = request.form.get("name")
@@ -15,6 +19,10 @@ def calculate_age():
     age_in_days = (today - dob_date).days
 
     return render_template("hello.html", name=name, age_in_days=age_in_days)
+
+
+def github():
+    return render_template("github.html")
 
 
 @app.route("/submit", methods=["POST"])
