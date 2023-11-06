@@ -30,7 +30,7 @@ def github():
 
 @app.route("/submit", methods=["POST"])
 def github_username():
-    username = request.form.get("username")
+    username = request.form.get("username.html")
 
 
 response = requests.get("https://api.github.com/users/{username}/repos")
