@@ -22,7 +22,7 @@ def calculate_age():
     return render_template("hello.html", name=name, age_in_days=age_in_days)
 
 
-@app.route("/github_username", methods=["POST"])
+@app.route("/submit", methods=["POST"])
 def github_username():
     username = request.form.get("username")
 
