@@ -31,7 +31,7 @@ def github():
 def github_username():
     username = request.form.get("username")
 
-    return render_template("username.html", username=username)
+    return render_template("username.html", name=username)
 
 
 def process_query(query):
