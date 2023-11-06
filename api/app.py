@@ -32,14 +32,14 @@ def github():
 def github_username():
     username = request.form.get("username")
 
-    return render_template("username.html", name=username)
 
-
-response = requests.get("https://api.github.com/users/{GITHUB_USERNAME}/repos")
+response = requests.get("https://api.github.com/users/{username}/repos")
 if reponse.status_code == 200:
     repos = response.json()
-    for repo in repos:
-        print (repo["full_name"])
+    return render_template("username.html", name=username, repositories=repos)
+else:
+    return "GitHub API request failed."
+
 def process_query(query):
     if "dinosaurs" in query:
         return "Dinosaurs ruled the Earth 200 million years ago"
