@@ -34,11 +34,12 @@ def github_username():
     response = requests.get("https://api.github.com/users/{username}/repos")
 
 
-if response.status_code == 200:
-    repos = response.json()
-    return render_template("username.html", name=username, repositories=repos)
-else:
-    return "GitHub API request failed."
+    if response.status_code == 200:
+        repos = response.json()
+        return render_template("username.html", name=username, repositories=repos)
+        
+    else:
+        return "GitHub API request failed."
 
 
 def process_query(query):
