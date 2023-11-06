@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request
 from datetime import datetime
+import requests
 
 app = Flask(__name__)
 
 
+@app.route("/")
 def index():
     return render_template("index.html")
 
@@ -20,17 +22,17 @@ def calculate_age():
 
     return render_template("hello.html", name=name, age_in_days=age_in_days)
 
-
-def github():
-    return render_template("github.html")
-
-
-@app.route("/submit", methods=["POST"])
+@app.route("/github_username", methods=["POST"])
 def github_username():
     username = request.form.get("username")
 
     return render_template("username.html", username=username)
 
+response = request.get("http://api.github.com/users/ninek-9/repos")
+if response.status_code == 200:
+    repos = response.json()
+    for repo in repos:
+        print(repo("github_username"))
 
 def process_query(query):
     if "dinosaurs" in query:
