@@ -4,11 +4,6 @@ from datetime import datetime
 app = Flask(__name__)
 
 
-@app.route("/")
-def index():
-    return render_template("index.html")
-
-
 @app.route("/calculate_age", methods=["POST"])
 def calculate_age():
     name = request.form.get("name")
