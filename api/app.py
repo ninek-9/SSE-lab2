@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from datetime import datetime
+import requests
 
 app = Flask(__name__)
 
@@ -34,6 +35,11 @@ def github_username():
     return render_template("username.html", name=username)
 
 
+response = requests.get("https://api.github.com/users/{GITHUB_USERNAME}/repos")
+if reponse.status_code == 200:
+    repos = response.json()
+    for repo in repos:
+        print (repo["full_name"])
 def process_query(query):
     if "dinosaurs" in query:
         return "Dinosaurs ruled the Earth 200 million years ago"
