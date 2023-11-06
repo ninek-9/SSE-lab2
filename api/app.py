@@ -40,6 +40,7 @@ if reponse.status_code == 200:
 else:
     return "GitHub API request failed."
 
+
 def process_query(query):
     if "dinosaurs" in query:
         return "Dinosaurs ruled the Earth 200 million years ago"
