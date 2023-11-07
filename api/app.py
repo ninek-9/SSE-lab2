@@ -58,6 +58,20 @@ def username():
                     "message": latest_commit["commit"]["message"]
                 }
 
+            contributors_url = repo["contributors_url"]
+            contributors_response = requests.get(contributors_url)
+            if contributors_response.status_code == 200:
+                contributors = contributors_response.json()
+                repo["contributors"] = [{
+                    "name": contributor["login"],
+                    "commits": contributor["contributions"]
+                }
+                for contributor in contributors[:5]
+                ]
+                
+            else:
+                repo["contributors"] = []
+
         return render_template("username.html",
                                name=username,
                                repositories=repos)

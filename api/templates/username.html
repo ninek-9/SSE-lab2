@@ -24,6 +24,14 @@
               <br>Date: {{ repo.latest_commit.date }}
               <br>Message: {{ repo.latest_commit.message }}
           {% endif %}
+          {% if repo.contributors %}
+          <br>Contributors:
+          <ul>
+            {% for contributor in repo.contributors %}
+              <li>{{ contributor.name }} ({{ contributor.commits }} commits)</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
           <br><a href="{{ repo.html_url }}" target="_blank">View Repository</a>
       </li>
     {% endfor %}
