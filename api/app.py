@@ -47,8 +47,8 @@ def username():
                 )
             repo["created_at_formatted"] = created_at.strftime("%B %d, %Y")
 
-            commits_status = repo["commits_status"].replace("{/sha}", "")
-            commits_response = requests.get(commits_status)
+            commits_url = repo["commits_url"].replace("{/sha}", "")
+            commits_response = requests.get(commits_url)
             if commits_response.status_code == 200:
                 latest_commit = commits_response.json()[0]
                 repo["latest_commit"] = {
