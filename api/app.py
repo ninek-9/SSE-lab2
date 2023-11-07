@@ -35,6 +35,12 @@ def username():
 
     if response.status_code == 200:
         repos = response.json()
+
+        for repo in repos:
+            updated_at = datetime.strptime(repo['updated_at'], '%Y-%m-%dT%H:%M:%SZ')
+            repo['updated_at_formatted'] = updated_at.strftime('%B %d, %Y')
+
+
         return render_template("username.html",
                                name=username,
                                repositories=repos)
