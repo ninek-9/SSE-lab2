@@ -31,7 +31,7 @@ def github():
 @app.route("/submit", methods=["POST"])
 def username():
     username = request.form.get("username")
-    response = requests.get("https://api.github.com/users/{username}/repos")
+    response = requests.get(f"https://api.github.com/users/{username}/repos")
 
     if response.status_code == 200:
         repos = response.json()
