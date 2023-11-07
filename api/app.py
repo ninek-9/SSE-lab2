@@ -37,13 +37,10 @@ def username():
         repos = response.json()
 
         for repo in repos:
-            updated_at = datetime.strptime(repo['updated_at'], '%Y-%m-%dT%H:%M:%SZ')
-            repo['updated_at_formatted'] = updated_at.strftime('%B %d, %Y')
+            updated_at = datetime.strptime(repo["updated_at"], "%Y-%m-%dT%H:%M:%SZ")
+            repo["updated_at_formatted"] = updated_at.strftime("%B %d, %Y")
 
-
-        return render_template("username.html",
-                               name=username,
-                               repositories=repos)
+        return render_template("username.html", name=username, repositories=repos)
 
     else:
         return "GitHub API request failed."
