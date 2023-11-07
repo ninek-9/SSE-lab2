@@ -64,10 +64,10 @@ def username():
                 contributors = contributors_response.json()
                 repo["contributors"] = [{
                     "name": contributor["login"],
-                    "commits": contributor["contributions"]
-                } for contributor in contributors[:5]
-            ]
-                
+                    "commits": contributor["contributions"
+                                           ]} for contributor in contributors[:5]
+                                        ]
+
             else:
                 repo["contributors"] = []
 
