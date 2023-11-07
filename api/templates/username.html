@@ -8,7 +8,13 @@
     <ul>
       {% for repo in repositories %}
         <li>
-          <strong>{{ repo.full_name }}</strong> - Last Updated: {{ repo.updated_at_formatted }}
+          <strong>{{ repo.full_name }}</strong> 
+          - Last Updated: {{ repo.updated_at_formatted }}
+          {% if repo.language %}
+              - Primary Language: {{ repo.language }}
+          {% else %}
+              - Primary Language: Not specified
+          {% endif %}
       </li>
     {% endfor %}
     </ul>
