@@ -8,7 +8,8 @@
     <ul>
       {% for repo in repositories %}
         <li>
-          <strong>{{ repo.full_name }}</strong> 
+          <strong>{{ repo.full_name }}</strong>
+              <br>Visibility: {{ 'Private' if repo.private else 'Public' }}
           {% if repo.language %}
               <br>Primary Language: {{ repo.language }}
           {% else %}
@@ -16,6 +17,7 @@
           {% endif %}
           <br>Created on: {{ repo.created_at_formatted }}
           <br>Last Updated: {{ repo.updated_at_formatted }}
+          <br><a href="{{ repo.html_url }}" target="_blank">View Repository</a>
       </li>
     {% endfor %}
     </ul>
