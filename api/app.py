@@ -56,8 +56,8 @@ def username():
                     "author": latest_commit["commit"]["author"]["name"],
                     "date": latest_commit["commit"]["author"]["date"],
                     "message": latest_commit["commit"]["message"]
-                }               
-        
+                }
+
         return render_template("username.html",
                                name=username,
                                repositories=repos)
