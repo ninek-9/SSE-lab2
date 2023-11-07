@@ -66,7 +66,7 @@ def username():
                     "name": contributor["login"],
                     "commits": contributor["contributions"]} 
                     for contributor in contributors[:5]]
-                
+
             else:
                 repo["contributors"] = []
 
