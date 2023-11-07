@@ -43,8 +43,8 @@ def username():
             repo["updated_at_formatted"] = updated_at.strftime("%B %d, %Y")
 
         return render_template("username.html",
-                       name=username,
-                       repositories=repos)
+                                name=username,
+                                repositories=repos)
 
     else:
         return "GitHub API request failed."
