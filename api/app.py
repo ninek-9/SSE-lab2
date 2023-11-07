@@ -50,7 +50,7 @@ def username():
             commits_status = repo["commits_status"].replace("{/sha}", "")
             commits_response = requests.get(commits_status)
             if commits_response.status_code == 200:
-                latest_commit = commits_response.json()[0]  # Get the latest commit
+                latest_commit = commits_response.json()[0]
                 repo["latest_commit"] = {
                     "hash": latest_commit["sha"],
                     "author": latest_commit["commit"]["author"]["name"],
