@@ -42,6 +42,11 @@ def username():
             )
             repo["updated_at_formatted"] = updated_at.strftime("%B %d, %Y")
 
+            created_at = datetime.strptime(
+                repo["created_at"], "%Y-%m-%dT%H:%M:%SZ"
+                )
+            repo["created_at_formatted"] = created_at.strftime("%B %d, %Y")
+
         return render_template("username.html",
                                name=username,
                                repositories=repos)
