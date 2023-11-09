@@ -1,40 +1,67 @@
 <html>
   <head>
     <title>Hello</title>
+    <style>
+      table {
+	  border-collapse: collapse;
+	  width: 100%;
+      }
+      th, td {
+	  border: 1px solid #dddddd;
+	  text-align: left;
+	  padding: 8px;
+      }
+      th {
+	  backgroud-color: #f2f2f2;
+      }
+    </style>
   </head>
   <body>
     <h1>Hello, {{ name }}</h1>
     <h2>Repositories:</h2>
-    <ul>
+    <table>
+      <tr>
+	<th>Repository Name</th>
+	<th>Visibility</th>
+	<th>Primary Language</th>
+	<th>Created on</th>
+	<th>Last Updated</th>
+	<th>Latest Commit</th>
+	<th>Contributors</th>
+	<th>View Repository</th>
+      </tr>
       {% for repo in repositories %}
-        <li>
-          <strong>{{ repo.full_name }}</strong>
-              <br>Visibility: {{ 'Private' if repo.private else 'Public' }}
-          {% if repo.language %}
-              <br>Primary Language: {{ repo.language }}
-          {% else %}
-              <br>Primary Language: Not specified
-          {% endif %}
-          <br>Created on: {{ repo.created_at_formatted }}
-          <br>Last Updated: {{ repo.updated_at_formatted }}
-          {% if repo.latest_commit %}
-              <br>Latest Commit: 
-              <br>Hash: {{ repo.latest_commit.hash }}
-              <br>Author: {{ repo.latest_commit.author }}
-              <br>Date: {{ repo.latest_commit.date }}
-              <br>Message: {{ repo.latest_commit.message }}
-          {% endif %}
-          {% if repo.contributors %}
-          <br>Contributors:
-          <ul>
-            {% for contributor in repo.contributors %}
-              <li>{{ contributor.name }} ({{ contributor.commits }} commits)</li>
+        <tr>
+          <td><strong>{{ repo.full_name }}</strong></td>
+          <td>{{ 'Private' if repo.private else 'Public' }}</td>
+          <td>{% if repo.language %}{{ repo.language }}{% else %}Not specified{% endif %}</td>
+          <td>{{ repo.created_at_formatted }}</td>
+          <td>{{ repo.updated_at_formatted }}</td>
+	  <td>
+	    {% if repo.latest_commit %} 
+              <strong>Hash:</strong> {{ repo.latest_commit.hash }}<br>
+              <strong>Author:</strong> {{ repo.latest_commit.author }}<br>
+              <strong>Date:</strong> {{ repo.latest_commit.date }}<br>
+              <strong>Message:</strong> {{ repo.latest_commit.message
+              }}
+	      {% else %}
+	      No commits
+              {% endif %}
+	  </td>
+	  <td>
+            {% if repo.contributors %}
+	    <ul>
+	      {% for contributor in repo.contributors %}
+	      <li>{{ contributor.name }} (Commits: {{ contributor.commits }})</li>
             {% endfor %}
-          </ul>
-          {% endif %}
-          <br><a href="{{ repo.html_url }}" target="_blank">View Repository</a>
-      </li>
+            </ul>
+	    {% else %}
+	    No contributors
+	    {% endif %}
+	    </td>
+          <td><a href="{{ repo.html_url }}" target="_blank">View Repository</a></td>
+      </tr>
     {% endfor %}
-    </ul>
+    </table>
   </body>
   </html>
